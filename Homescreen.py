@@ -45,7 +45,7 @@ class Interface(BoxLayout):
     pass
 
 
-class FinanceApp(App):
+class HomescreenApp(App):  # name of class needs to match *.kv file. ('App' not necessary to include in filename')
     def build(self):
         Window.size = (375, 775)
         root_widget = Interface()
