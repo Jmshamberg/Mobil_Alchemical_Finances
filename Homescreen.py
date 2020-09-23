@@ -1,4 +1,5 @@
 import os
+import kivy
 
 from kivy.app import App
 
@@ -10,6 +11,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.graphics import Rectangle, Color
+from kivy.metrics import dp, sp
 from kivy.properties import ListProperty
 
 
@@ -18,22 +20,22 @@ class SummaryGrid(GridLayout):
         super(SummaryGrid, self).__init__(**kwargs)
         self.cols = 2
 
-        self.col1_width = 225
-        self.col2_width = 150
+        self.col1_width = dp(225)
+        self.col2_width = dp(150)
 
         for x in range(0, 100, 1):
             accountx = Label(text=f'Target Retirement 2055',
                              size_hint_x=None,
                              size_hint_y=None,
                              width=self.col1_width,
-                             height=35,
+                             height=dp(35),
                              color='#748b75')
 
             balancex = Label(text='$100,000.00',
                              size_hint_x=None,
                              size_hint_y=None,
                              width=self.col2_width,
-                             height=35)
+                             height=dp(35))
 
             self.add_widget(accountx)
             self.add_widget(balancex)
@@ -45,12 +47,15 @@ class Interface(BoxLayout):
     pass
 
 
-class HomescreenApp(App):  # name of class needs to match *.kv file. ('App' not necessary to include in filename')
+class HomeScreenApp(App):
+    def __init__(self):
+        super(HomeScreenApp, self).__init__()
+
     def build(self):
-        Window.size = (375, 775)
+        Window.size = (dp(375), dp(775))
         root_widget = Interface()
         return root_widget
 
 
 if __name__ == "__main__":
-    FinanceApp().run()
+    HomeScreenApp().run()
