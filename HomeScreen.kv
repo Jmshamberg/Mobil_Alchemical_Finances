@@ -102,8 +102,6 @@
 
     BoxLayout:
         orientation: 'vertical'
-        size_hint_y: None
-        height: dp(570)
         ScrollView:
             canvas.before:
                 Color:
@@ -118,7 +116,7 @@
                     Color:
                         rgba: 0.5725, 0.6784, 0.5804, 1
                     Rectangle:
-                        pos: dp(225), dp(0)
+                        pos: self.col1_width, dp(0)
                         size: self.size
 
 
